@@ -7,7 +7,6 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
@@ -21,148 +20,149 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="my-icons.html">
-
-
 <dom-module id="my-app">
-  <template>
-    <style>
-      :host {
-        --app-primary-color: #4285f4;
-        --app-secondary-color: black;
-
-        display: block;
-      }
-
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
-      div.background{
-        /* Set up proportionate scaling */
-        top: 70px;
-        /* Set up positioning */
-        position: absolute;
-        left: 0;
-      }
-      div.footer{
-        bottom:0px;
-        text-align:center;
-        padding-bottom:5px;
-      }
-      div.menu{
-        left:50px;
-        top: 95px;
-      }
-      .logo {
-        text-align: center;
-      }
-      .logo a {
-        font-size: 16px;
-        font-weight: 600;
-        letter-spacing: 0.3em;
-        color: var(--app-primary-color);
-        text-decoration: none;
-        /* required for IE 11, so this <a> can receive pointer events */
-        display: inline-block;
-        pointer-events: auto;
-      }
-      .drawer-list {
-        margin: 0 20px;
-      }
-      .drawer-list a {
-        display: block;
-
-        padding: 0 16px;
-
-        text-decoration: none;
-
-        color: var(--app-secondary-color);
-
-        line-height: 40px;
-      }
-
-      .drawer-list a.iron-selected {
-        color: black;
-
-        font-weight: bold;
-      }
-    </style>
-
-    <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}">
-    </app-route>
-    <!-- Main content -->    
-    <app-header-layout has-scrolling-region>
-    <!-- Header Title content -->
-      <app-header condenses reveals effects="waterfall">   
-        <div main-title style="padding-left:75px;">
-          <h1 style="font-family:serif; font-size: 45px">Golden Potato</h1>
-        </div>
-        <!-- Background -->
-        <div class="background">
-          <img id="img" src="..\images\MainScreen\mainscreen1.jpg" alt="Jeff and alex" style="opacity: 1;width:100%; transition: opacity 0.5s; max-height: 825px">
-          <div class="footer">
-            © JMichaelson Collection
-          </div> 
-        </div>
-
-        <div class="menu">
-        <!-- menu Button content -->
-          <paper-menu-button-dropdown-background>
-            <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
-            <paper-menu class="dropdown-content">
-              <paper-item>poop ew One</paper-item>
-              <paper-item>Viewvfxcfvxvx Two</paper-item>
-              <paper-item>View Three</paper-item>
-            </paper-menu>
-          </paper-menu-button-dropdown-background>
-        </div>
-        <div > 
-          here is our best friend
-        </div>
-                
-      </app-header>
-    </app-header-layout>
-  </template>
-
-
-  <script>
-    Polymer({
-      is: 'my-app',
-
-      properties: {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
+    <template>
+        <style>
+        :host {
+            --app-primary-color: #4285f4;
+            --app-secondary-color: black;
+            display: block;
         }
-      },
+        
+        app-header {
+            color: #fff;
+            background-color: var(--app-primary-color);
+        }
+        
+        app-header paper-icon-button {
+            --paper-icon-button-ink-color: white;
+        }
+        /*      div.background{
+        /* Set up proportionate scaling */
+        /*        top: 70px;*/
+        /* Set up positioning */
+        /*        position: absolute;
+        left: 0;*/
+        /*      }*/
+        
+        div.footer {
+            bottom: 0px;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+        
+        div.menu {
+            left: 50px;
+            top: 95px;
+        }
+        
+        .logo {
+            text-align: center;
+        }
+        
+        .logo a {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            color: var(--app-primary-color);
+            text-decoration: none;
+            /* required for IE 11, so this <a> can receive pointer events */
+            display: inline-block;
+            pointer-events: auto;
+        }
+        
+        .drawer-list {
+            margin: 0 20px;
+        }
+        
+        .drawer-list a {
+            display: block;
+            padding: 0 16px;
+            text-decoration: none;
+            color: var(--app-secondary-color);
+            line-height: 40px;
+        }
+        
+        .drawer-list a.iron-selected {
+            color: black;
+            font-weight: bold;
+        }
+        
+        .background-image {
+            color: white;
+            background-image: url('../images/MainScreen/mainscreen1.jpg');
+            height: 825px;
+            width: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        paper-item{
+          color: black;
+        }
+        paper-menu-button {
+            background-color: rgba(52, 103, 167, 0.55);
+            border-radius: 50%;
+            margin: 16px;
+        }
+        </style>
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}">
+        </app-route>
+        <!-- Main content -->
+        <app-header-layout>
+            <!-- Header Title content -->
+            <app-header>
+                <div main-title>
+                    <h1 style="padding-left: 75px; font-family:serif; font-size: 45px">Golden Potato</h1>
+                </div>
+            </app-header>
+            <div class="background-image">
+                <paper-menu-button>
+                    <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+                    <paper-menu class="dropdown-content">
+                        <paper-item>Share</paper-item>
+                        <paper-item>Settings</paper-item>
+                        <paper-item>Help</paper-item>
+                    </paper-menu>
+                </paper-menu-button>
+            </div>
+            <div class="footer">
+                © JMichaelson Collection
+            </div>
+        </app-header-layout>
+    </template>
+    <script>
+    Polymer({
+        is: 'my-app',
 
-      observers: [
-        '_routePageChanged(routeData.page)'
-      ],
+        properties: {
+            page: {
+                type: String,
+                reflectToAttribute: true,
+                observer: '_pageChanged'
+            }
+        },
 
-      _routePageChanged: function(page) {
-        this.page = page || 'view1';
-      },
+        observers: [
+            '_routePageChanged(routeData.page)'
+        ],
 
-      _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-      },
+        _routePageChanged: function(page) {
+            this.page = page || 'view1';
+        },
 
-      _showPage404: function() {
-        this.page = 'view404';
-      }
+        _pageChanged: function(page) {
+            // Load page import on demand. Show 404 page if fails
+            var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        },
+
+        _showPage404: function() {
+            this.page = 'view404';
+        }
     });
-  </script>
+    </script>
 </dom-module>
