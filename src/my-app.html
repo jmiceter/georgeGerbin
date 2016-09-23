@@ -99,9 +99,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             background-repeat: no-repeat;
         }
         
-        paper-item{
-          color: black;
+        paper-item {
+            color: black;
         }
+        
         paper-menu-button {
             background-color: rgba(52, 103, 167, 0.55);
             border-radius: 50%;
@@ -123,11 +124,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <paper-menu-button>
                     <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
                     <paper-menu class="dropdown-content">
-                        <paper-item>Share</paper-item>
-                        <paper-item>Settings</paper-item>
-                        <paper-item>Help</paper-item>
+                        <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+                            <paper-item><a name="view1" href="/view1">Page One</a></paper-item>
+                            <paper-item><a name="view2" href="/view2">Page Two</a></paper-item>
+                            <paper-item><a name="view3" href="/view3">Help</a></paper-item>
+                        </iron-selector>
                     </paper-menu>
                 </paper-menu-button>
+                <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+                    <my-view1 name="view1"></my-view1>
+                    <my-view2 name="view2"></my-view2>
+                    <my-view3 name="view3"></my-view3>
+                    <my-view404 name="view404"></my-view404>
+                </iron-pages>
             </div>
             <div class="footer">
                 © JMichaelson Collection
