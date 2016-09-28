@@ -117,7 +117,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Header Title content -->
             <app-header>
                 <div main-title>
-                    <h1 style="padding-left: 75px; font-family:serif; font-size: 45px">Golden Potato</h1>
+                    <h1 style="padding-left: 75px; font-family:serif; font-size: 45px">Golden Potato Gr</h1>
                 </div>
             </app-header>
             <div class="background-image">
@@ -125,16 +125,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
                     <paper-menu class="dropdown-content">
                         <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-                            <paper-item><a name="view1" href="/view1">Page One</a></paper-item>
-                            <paper-item><a name="view2" href="/view2">Page Two</a></paper-item>
-                            <paper-item><a name="view3" href="/view3">Help</a></paper-item>
+                            <paper-item><a name="Home"    href="/Home">Home</a></paper-item>
+                            <paper-item><a name="project" href="/project">Projects</a></paper-item>
+                            <paper-item><a name="client"  href="/client">Clients</a></paper-item>
+                            <paper-item><a name="blog"    href="/blog">Blog</a></paper-item>
+                            <paper-item><a name="about"   href="/about">About US</a></paper-item>
                         </iron-selector>
                     </paper-menu>
                 </paper-menu-button>
                 <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-                    <my-view1 name="view1"></my-view1>
-                    <my-view2 name="view2"></my-view2>
-                    <my-view3 name="view3"></my-view3>
+                    <my-Home    name="Home">   </my-Home>
+                    <my-project name="project"></my-project>
+                    <my-client  name="client"> </my-client>
+                    <my-blog    name="blog">   </my-blog>
+                    <my-about   name="about">  </my-about>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
             </div>
@@ -160,7 +164,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         ],
 
         _routePageChanged: function(page) {
-            this.page = page || 'view1';
+            this.page = page || 'Home';
         },
 
         _pageChanged: function(page) {
